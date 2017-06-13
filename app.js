@@ -74,4 +74,3 @@ for (var i = 0; i < hoursOpen.length; i++) {
   var totalCookiesAlki = alkiShop.avgCookieSalePerHour * alkiShop.numCustomerPerHour();
   alkiShop.totalCookies[i] = [totalCookiesAlki, hoursOpen[i]];
 }
-console.log(pikeShop, SeaTac, downTown, capitolHill, alkiShop);
