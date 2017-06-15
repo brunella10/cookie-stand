@@ -2,7 +2,7 @@
 
 var hoursOpen = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-var ShopSales = [];
+var shopSales = [];
 function cookieShops(shopName, minCustomerPerHour, maxCustomerPerHour, avgCookieSalePerHour) {
   this.shopName = shopName;
   this.minCustomerPerHour = minCustomerPerHour;
@@ -11,7 +11,7 @@ function cookieShops(shopName, minCustomerPerHour, maxCustomerPerHour, avgCookie
   this.totalCookies = 0;
   this.totalCookiePerHour = [];
   this.customerPerHours = [];
-  ShopSales.push(this);
+  shopSales.push(this);
 };
 cookieShops.prototype.newCustomerPerHour = function() {
   var temporary = [];
@@ -45,10 +45,10 @@ cookieShops.prototype.render = function() {
     shopTr.appendChild(tdEl);
   }
 };
-
+//header
 var scheduleTr = document.getElementById('schedule');
 var thEl = document.createElement('th');
-thEl.textContent = '';
+thEl.textContent = 'Location';
 scheduleTr.appendChild(thEl);
 for (var i = 0; i < hoursOpen.length; i++) {
   var thEl = document.createElement('th');
@@ -62,6 +62,36 @@ new cookieShops('downTown', 11, 38, 3.7);
 new cookieShops('capitolHill', 20, 38, 2.3);
 new cookieShops('alkiShop', 2, 16, 4.6);
 
-for (var i = 0; i < ShopSales.length; i++) {
-  ShopSales[i].render();
+for (var i = 0; i < shopSales.length; i++) {
+  shopSales[i].render();
 }
+//forms
+// document.getElementById('Add New Store').addEventListener('Submit', shopSales);
+// function shopSales() {
+//   event.preventDefault();
+//   var userText = getElementById('form');
+//   if (!event.target.storeName || !event.target.minNumCookies || !event.target.maxNumCookies) {
+//     return alert('Field cannot be empty');
+//   }
+//   var firstField = storeName;
+//   var secondField = minNumCookies;
+//   var thirdField = maxNumCookies;
+//
+//   } if (!event.target.minNumCookies){
+//
+//
+//   } if  (!event.target.maxNumCookies){
+//
+//   } else (!event.target.storeName)
+//     elusertext.textContent =
+
+// allNewData.prototype.render = function(){
+//   var liEl = document.createElement(li);
+//   liEl.textContent = '';
+  //liEl.innerHTML??? =  + this.storeName + ' , have' + this.maxNumCookies + ' amount of cookies and this minmun ' + this.minNumCookies + ;
+//   return liEl();
+// };
+// var Stores  = function(storeLocation, text) {
+//   this.storeLocation = storeLocation;
+//   this.text = text;
+// };
