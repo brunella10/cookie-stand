@@ -123,8 +123,6 @@ function manageForm(e){
 }
 header();
 renderAllLocations();
-var storeForm = document.getElementById('storeForm');
-storeForm.addEventListener('submit', manageForm);
 
   // forms= from here I did somthing that broke the code.
   // I need a footer function to put the totalCookies*hoursOpen*cookieShops
