@@ -31,11 +31,14 @@ cookieShops.prototype.calCookieSoldEachHour = function() {
     function(total, num){
       return total + num;
     }
-, 0);
+    , 0);
 };
 cookieShops.prototype.render = function() {
   this.calCookieSoldEachHour();
-  var shopTr = document.getElementById(this.shopName);
+  var shopTr = document.createElement('tr');
+  var shopTable = document.getElementById('shops');
+  shopTable.appendChild(shopTr);
+
   var tdEl = document.createElement('td');
   tdEl.textContent = this.shopName;
   shopTr.appendChild(tdEl);
@@ -45,16 +48,48 @@ cookieShops.prototype.render = function() {
     shopTr.appendChild(tdEl);
   }
 };
-//header
-var scheduleTr = document.getElementById('schedule');
-var thEl = document.createElement('th');
-thEl.textContent = 'Location';
-scheduleTr.appendChild(thEl);
-for (var i = 0; i < hoursOpen.length; i++) {
+  //header
+function header(){
+  var shopTable = document.getElementById('shops');
+  var scheduleTr = document.createElement('tr');
+  shopTable.appendChild(scheduleTr);
+
   var thEl = document.createElement('th');
-  thEl.textContent = hoursOpen[i];
+  thEl.textContent = 'Location';
   scheduleTr.appendChild(thEl);
-}
+  for (var i = 0; i < hoursOpen.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = hoursOpen[i];
+    scheduleTr.appendChild(thEl);
+  };
+};
+
+function FooterRow() {
+  var trEl = document.createElement('tr');
+
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total daily';
+  trEl.appendChild(thEl);
+
+  var totalOfTotals = 0;
+  var hourlyTotal = 0;
+
+  for (var i = 0; i < hours.length; i++) {
+    hourlyTotal = 0;
+    for (var j = 0; j < shopSales.length; j++){
+      hourlyTotal += shopSales.cookiesEachHour[i];
+      totalOfTotals += shopSales.cookiesEachHour[i];
+    }
+    thEl = document.createElement('th');
+    thEl.textContent = totalDaily;
+    trEl.appendChild(thEl);
+  }
+  thEl = document.createElement('th');
+  thEl.textContent = totalDaily;
+  trEl.appendChild(thEl);
+
+  schedule.appendChild(trEl);
+};
 
 new cookieShops('pikeShop', 23, 65, 6.3);
 new cookieShops('SeaTac', 3, 24, 1.2);
@@ -62,36 +97,59 @@ new cookieShops('downTown', 11, 38, 3.7);
 new cookieShops('capitolHill', 20, 38, 2.3);
 new cookieShops('alkiShop', 2, 16, 4.6);
 
-for (var i = 0; i < shopSales.length; i++) {
-  shopSales[i].render();
+function renderAllLocations(){
+  for (var i = 0; i < shopSales.length; i++) {
+    shopSales[i].render();
+  };
 }
-//forms
-// document.getElementById('Add New Store').addEventListener('Submit', shopSales);
-// function shopSales() {
-//   event.preventDefault();
-//   var userText = getElementById('form');
-//   if (!event.target.storeName || !event.target.minNumCookies || !event.target.maxNumCookies) {
-//     return alert('Field cannot be empty');
-//   }
-//   var firstField = storeName;
-//   var secondField = minNumCookies;
-//   var thirdField = maxNumCookies;
-//
-//   } if (!event.target.minNumCookies){
-//
-//
-//   } if  (!event.target.maxNumCookies){
-//
-//   } else (!event.target.storeName)
-//     elusertext.textContent =
 
-// allNewData.prototype.render = function(){
-//   var liEl = document.createElement(li);
-//   liEl.textContent = '';
-  //liEl.innerHTML??? =  + this.storeName + ' , have' + this.maxNumCookies + ' amount of cookies and this minmun ' + this.minNumCookies + ;
-//   return liEl();
-// };
-// var Stores  = function(storeLocation, text) {
-//   this.storeLocation = storeLocation;
-//   this.text = text;
-// };
+function manageForm(e){
+  e.preventDefault();
+  var storeName = e.target.storeName.value;
+  var minCookies = parseInt(e.target.minNumCookies.value);
+  var maxCookies = parseInt(e.target.maxNumCookies.value);
+  var avg = parseFloat(e.target.average.value);
+
+  new cookieShops(storeName, minCookies, maxCookies, avg);
+  e.target.storeName.value = null;
+  e.target.minNumCookies.value = null;
+  e.target.maxNumCookies.value = null;
+  e.target.average.value = null;
+
+  var scheduleTr = document.getElementById('shops');
+  scheduleTr.innerHTML = '';
+  header();
+  renderAllLocations();
+}
+header();
+renderAllLocations();
+
+  // forms= from here I did somthing that broke the code.
+  // I need a footer function to put the totalCookies*hoursOpen*cookieShops
+  //
+  // document.getElementById('Submit').addEventListener('Submit', shopSales);
+  // function newStore()
+  //   event.preventDefault();
+  //   var userText = getElementById('form');
+  //   if (!event.target.storeName || !event.target.minNumCookies || !event.target.maxNumCookies) {
+  //     return alert('Field cannot be empty');
+  //   } if (!event.target.minNumCookies){
+  //
+  //   } if (!event.target.maxNumCookies){
+  //
+  //   } else (!event.target.storeName)
+  //     userText.textContent =
+  //   };
+  //
+  //     var firstField = storeName;
+  //     var secondField = minNumCookies;
+  //     var thirdField = maxNumCookies;
+  // newStore.prototype.render = function(){
+  //   var liEl = document.createElement(li);
+  //   liEl.textContent = '';
+  //   liEl.innerHTML = '';
+  // };
+  // var Stores  = function(storeLocation, text) {
+  //   this.storeLocation = storeLocation;
+  //   this.text = text;
+  // };
