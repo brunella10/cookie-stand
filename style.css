@@ -2,14 +2,19 @@
   font-family: 'Slabo 27px', serif;
 }
 body {
-  width: 980px;
+  width: auto;
 }
 img {
-opacity: 0.7;
-margin: 80px 100px 80px 240px;
+opacity: 0.4;
+width: 140px;
+align-content: center;
+/*display: inline-table;*/
 }
-
-Form {
+div.container {
+  width: 900px;
+  margin: auto;
+}
+#Form {
 font-size: 24px;
 }
 /*fieldset {
@@ -25,29 +30,50 @@ h1 {
   text-align: center;
   margin: auto;
 }
+div.backcolor {
+  background-color: #F2FAF3;
+  opacity: 0.3;
+}
 #shops {
 margin: 100px auto;
 background-image:url(family.jpg);
 }
+
 #shops td{
-  padding: 10px
+  padding: 10px;
 }
 th {
   font-size: 20px;
-  /*border-style: solid;
-  border-color: #E8DFC8;;
-  border-spacing: 2px;*/
+  background-color: #FFFFFF;
+  opacity: 0.7;
 }
  td {
   font-size: 18px;
-  /*border-style: solid;
-  border-color: #E8DFC8;
-  border-spacing: 2px;*/
+  background-color: #FFFFFF;
+  opacity: 0.7
 }
-
-.chinook {
+ul {
+  width: auto;
+  position: relative;
+}
+h2 {
+  position: absolute;
+  font-family: 'Sofia', cursive;
+  font-size: 50px;
+  text-align: center;
+}
+li {
+  border: 5px
+  padding: auto;
   float: left;
+  display: inline-table;
 }
-.cutter {
-
+footer {
+  margin: 300px;
+  text-align: center;
+  font-family: 'Sofia', cursive;
+  font-size: 14px;
+}
+div.clear {
+  float: none;
 }
