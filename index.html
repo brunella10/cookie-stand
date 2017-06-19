@@ -3,47 +3,50 @@
 <head>
   <title> Salmon cookies </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-  <img  src= http://robertehill.github.io/cookie-stand-REH/img/salmon.png </img>
 </head>
 <body>
-  <h1>Pat's Salmon Cookies</h1>
-  <form id="storeForm">
-   <fieldset>
-     <legend> Add New Store </legend>
+  <div class="container">
+    <img  src= "http://robertehill.github.io/cookie-stand-REH/img/salmon.png"/>
+    <h1>Pat's Salmon Cookies</h1>
 
-     <label for="storeName">storeName: </label>
-     <input name="storeName" type="text" />
+    <form id="storeForm">
+      <fieldset>
+        <legend> Add New Store </legend>
 
-     <label for="minNumCookies"> Min amount cookies </label>
-     <input name="minNumCookies" type="number" size="20" />
+        <label for="storeName">storeName: </label>
+        <input name="storeName" type="text" />
 
-     <label for="maxNumCookies">Max amount cookies </label>
-      <input name="maxNumCookies" type="number" />
-      <label for="average"> average amount of cookies </label>
-       <input name="average" type="number" />
+        <label for="minNumCookies"> Min amount cookies </label>
+        <input name="minNumCookies" type="number" size="20" />
 
-      <button type="submit">Submit</button>
-   </fieldset>
- </form>
-    </div>
-  </section>
-  <table id="shops">
-  </table>
+        <label for="maxNumCookies">Max amount cookies </label>
+        <input name="maxNumCookies" type="number" />
+        <label for="average"> average amount of cookies </label>
+        <input name="average" type="number" />
+
+        <button type="submit">Submit</button>
+      </fieldset>
+    </form>
+
+</section>
+<table id="shops">
+</table>
 <div class="backgroundimage">
   <div class="border">
-  <h3 class="image"></h3>
-    <img src="chinook.jpg" class= "chinook" alt="Chinook" width= "150" height= "120"/>
-    <img src="cutter.jpeg" class="cutter" height="150" width="150" aling="left" />
-    <img src="family.jpg" class="family" width="300" height="180" align="center" />
-    <img src="frosted-cookie.jpg" class="cookie" height="75" width="125" align="right"/>
-    <img src="salmon.jpg" class="salmon" width="200" height="150" />
-    <img src="shirt.jpg" class="tshirt" height="220" width="185" />
+    <h3 class="image"></h3>
+    <img src="chinook.jpg" class= "chinook" alt="Chinook"/>
+    <img src="cutter.jpeg" class="cutter" alt="cutter"/>
+    <img src="frosted-cookie.jpg" class="cookie" alt="frosted cookie"/>
+    <img src="salmon.jpg" class="salmon" alt="salmon" />
+    <img src="shirt.jpg" class="tshirt" alt="shirt" />
   </div>
 </div>
 
-  <script src="app.js" type="text/javascript"></script>
+<script src="app.js" type="text/javascript"></script>
+</div>
 </body>
 </html>
