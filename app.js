@@ -1,7 +1,8 @@
 'use strict';
 
-var hoursOpen = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var hoursOpen = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+//shopSales is an array of shops
 var shopSales = [];
 function cookieShops(shopName, minCustomerPerHour, maxCustomerPerHour, avgCookieSalePerHour) {
   this.shopName = shopName;
@@ -16,6 +17,7 @@ function cookieShops(shopName, minCustomerPerHour, maxCustomerPerHour, avgCookie
 cookieShops.prototype.newCustomerPerHour = function() {
   var temporary = [];
   for (var i = 0; i < hoursOpen.length; i++) {
+    // genarate a random number between the minCustomerPerHour and the maxCustomerPerHour
     temporary.push(Math.floor(Math.random() * (this.maxCustomerPerHour - this.minCustomerPerHour + 1) + this.minCustomerPerHour));
   }
   this.customerPerHours = temporary;
@@ -47,6 +49,9 @@ cookieShops.prototype.render = function() {
     tdEl.textContent = this.totalCookiePerHour[i];
     shopTr.appendChild(tdEl);
   }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.totalCookies;
+  shopTr.appendChild(tdEl);
 };
   //header
 function header(){
@@ -62,33 +67,36 @@ function header(){
     thEl.textContent = hoursOpen[i];
     scheduleTr.appendChild(thEl);
   };
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total';
+  scheduleTr.appendChild(thEl);
 };
 
-function FooterRow() {
+function footerRow() {
+  var shopTable = document.getElementById('shops');
   var trEl = document.createElement('tr');
+  shopTable.appendChild(trEl);
 
-  var thEl = document.createElement('th');
+  var thEl = document.createElement('td');
   thEl.textContent = 'Total daily';
   trEl.appendChild(thEl);
 
   var totalOfTotals = 0;
   var hourlyTotal = 0;
 
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hoursOpen.length; i++) {
     hourlyTotal = 0;
     for (var j = 0; j < shopSales.length; j++){
-      hourlyTotal += shopSales.cookiesEachHour[i];
-      totalOfTotals += shopSales.cookiesEachHour[i];
+      hourlyTotal += shopSales[j].totalCookiePerHour[i];
+      totalOfTotals += shopSales[j].totalCookiePerHour[i];
     }
-    thEl = document.createElement('th');
-    thEl.textContent = totalDaily;
+    thEl = document.createElement('td');
+    thEl.textContent = hourlyTotal;
     trEl.appendChild(thEl);
   }
-  thEl = document.createElement('th');
-  thEl.textContent = totalDaily;
+  thEl = document.createElement('td');
+  thEl.textContent = totalOfTotals;
   trEl.appendChild(thEl);
-
-  schedule.appendChild(trEl);
 };
 
 new cookieShops('pikeShop', 23, 65, 6.3);
@@ -101,7 +109,7 @@ function renderAllLocations(){
   for (var i = 0; i < shopSales.length; i++) {
     shopSales[i].render();
   };
-}
+};
 
 function manageForm(e){
   e.preventDefault();
@@ -120,9 +128,12 @@ function manageForm(e){
   scheduleTr.innerHTML = '';
   header();
   renderAllLocations();
-}
+};
+var storeForm = document.getElementById('storeForm');
+storeForm.addEventListener('submit', manageForm);
 header();
 renderAllLocations();
+footerRow();
 
   // forms= from here I did somthing that broke the code.
   // I need a footer function to put the totalCookies*hoursOpen*cookieShops
