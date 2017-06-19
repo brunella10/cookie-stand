@@ -2,14 +2,17 @@
   font-family: 'Slabo 27px', serif;
 }
 body {
-  width: 980px;
+  width: auto;
 }
 img {
 opacity: 0.7;
-margin: 80px 100px 80px 240px;
+margin: 80px auto;
 }
-
-Form {
+div.container {
+  width: 900px;
+  margin: auto;
+}
+#Form {
 font-size: 24px;
 }
 /*fieldset {
@@ -25,15 +28,25 @@ h1 {
   text-align: center;
   margin: auto;
 }
+div.white{
+  background-image: url(family.jpg);
+  opacity: 0.4;
+}
 #shops {
 margin: 100px auto;
 background-image:url(family.jpg);
 }
+
 #shops td{
-  padding: 10px
+  padding: 10px;
+  /*background-color: white;
+  opacity: 0.2;*/
 }
 th {
   font-size: 20px;
+  background-color: white;
+  /*opacity: 0.2;
+  color: black;*/
   /*border-style: solid;
   border-color: #E8DFC8;;
   border-spacing: 2px;*/
@@ -44,10 +57,10 @@ th {
   border-color: #E8DFC8;
   border-spacing: 2px;*/
 }
-
-.chinook {
+img.chinook {
   float: left;
 }
-.cutter {
-
+div.border {
+  /*max-width: 50%;
+  max-height: 50%;*/
 }
